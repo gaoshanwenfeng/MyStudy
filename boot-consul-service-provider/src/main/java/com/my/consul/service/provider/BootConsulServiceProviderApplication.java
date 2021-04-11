@@ -1,4 +1,4 @@
-package com.my.boot.consul;
+package com.my.consul.service.provider;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -12,9 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @Slf4j
 @SpringBootApplication
-public class BootConsulApplication {
+public class BootConsulServiceProviderApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BootConsulApplication.class, args);
+        SpringApplication.run(BootConsulServiceProviderApplication.class, args);
         log.info("Thea service starts success ....... Welcome...");
     }
 }
