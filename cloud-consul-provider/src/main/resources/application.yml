@@ -7,7 +7,7 @@ server:
 
 spring:
   application:
-    name: cloud_consul_provider
+    name: cloud-consul-provider
   profiles:
     active: dev
 
@@ -17,10 +17,6 @@ spring:
       enabled: true
       host: 192.168.1.2
       port: 8900
-
-      discovery:
-        instance-id: cloud_consul_provider
-        service-name: cloud_consul_provider
 
 logging:
   config: classpath:logback-spring.xml
