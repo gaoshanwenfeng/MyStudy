@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,243 +15,70 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+
+        <mysql.version>5.1.43</mysql.version>
+        <druid.version>1.1.9</druid.version>
+        <mybatis.version>3.5.4</mybatis.version>
+        <shardingsphere.version>5.0.0-alpha</shardingsphere.version>
+
+        <redisson.version>3.14.0</redisson.version>
+        <gson.version>3.14.0</gson.version>
+        <rocketmy.version>4.3.0</rocketmy.version>
+        <curator.version>4.0.1</curator.version>
+
+        <dubbo.version>2.6.1</dubbo.version>
         <springframework.version>5.1.7.RELEASE</springframework.version>
+        <mybatis.spring.boot.version>1..3.2</mybatis.spring.boot.version>
         <spring.boot.version>2.0.6.RELEASE</spring.boot.version>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <spring-cloud-alibaba-cloud.version>2.1.2.RELEASE</spring-cloud-alibaba-cloud.version>
+
+
         <commons-io.version>2.5</commons-io.version>
         <commons-lang3.version>3.6</commons-lang3.version>
         <commons-collections.version>3.2.1</commons-collections.version>
         <oval.version>1.86</oval.version>
-        <redisson.version>3.14.0</redisson.version>
-        <servlet-api.version>3.1.0</servlet-api.version>
-        <aspectjrt.version>1.8.13</aspectjrt.version>
+
+        <netty.version>4.1.29.Final</netty.version>
+        <jol-core.version>0.9</jol-core.version>
+        <javax.ws.rs.version>2.0</javax.ws.rs.version>
+        <junit.version>4.12</junit.version>
+        <lombok.version>1.18.4</lombok.version>
     </properties>
 
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.my</groupId>
-                <artifactId>lang</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.my</groupId>
-                <artifactId>util</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.my</groupId>
-                <artifactId>dubbo-support</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.my</groupId>
-                <artifactId>TX-client</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.my</groupId>
-                <artifactId>TX-common</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.my</groupId>
-                <artifactId>Dubbo-Order-Client</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-                <scope>compile</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.my</groupId>
-                <artifactId>Dubbo-Stock-Client</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-common</artifactId>
-                <version>4.3.0</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>io.netty</groupId>
-                        <artifactId>netty-tcnative</artifactId>
-                    </exclusion>
-                </exclusions>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-remoting</artifactId>
-                <version>4.3.0</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>io.netty</groupId>
-                        <artifactId>netty-tcnative</artifactId>
-                    </exclusion>
-                </exclusions>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-client</artifactId>
-                <version>4.3.0</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>io.netty</groupId>
-                        <artifactId>netty-tcnative</artifactId>
-                    </exclusion>
-                </exclusions>
-                <scope>provided</scope>
-            </dependency>
-
-            <!--netty 的编码解码器-->
-            <dependency>
-                <groupId>org.msgpack</groupId>
-                <artifactId>msgpack-core</artifactId>
-                <version>0.8.16</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.google.protobuf</groupId>
-                <artifactId>protobuf-java</artifactId>
-                <version>3.11.4</version>
-            </dependency>
-            <dependency>
-                <groupId>com.caucho</groupId>
-                <artifactId>hessian</artifactId>
-                <version>4.0.60</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.pdfbox</groupId>
-                <artifactId>pdfbox</artifactId>
-                <version>2.0.12</version>
-            </dependency>
-
             <!--Java Redis client-->
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>
                 <version>${redisson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.redisson</groupId>
-                <artifactId>redisson-spring-data-20</artifactId>
-                <version>${redisson.version}</version>
-            </dependency>
-
-            <!--java object layout-->
-            <dependency>
-                <groupId>org.openjdk.jol</groupId>
-                <artifactId>jol-core</artifactId>
-                <version>0.9</version>
+                <type>pom</type>
             </dependency>
 
             <dependency>
                 <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>2.8.5</version>
+                <artifactId>gson-parent</artifactId>
+                <version>${gson.version}</version>
+                <type>pom</type>
             </dependency>
-
-            <!--JSON Web Token -->
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt</artifactId>
-                <version>0.7.0</version>
-            </dependency>
-            <dependency>
-                <groupId>com.auth0</groupId>
-                <artifactId>java-jwt</artifactId>
-                <version>3.3.0</version>
-            </dependency>
-
 
             <dependency>
                 <groupId>org.apache.shardingsphere</groupId>
                 <artifactId>shardingsphere-jdbc-core</artifactId>
-                <version>5.0.0-alpha</version>
-            </dependency>
-
-            <dependency>
-                <groupId>commons-dbcp</groupId>
-                <artifactId>commons-dbcp</artifactId>
-                <version>1.4</version>
-            </dependency>
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-<!--             <version>8.0.11</version>-->
-                <version>5.1.43</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>3.5.4</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis-spring</artifactId>
-                <version>1.3.2</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>1.1.9</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper</artifactId>
-                <version>5.2.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>1.3.2</version>
-            </dependency>
-
-            <!-- REST ws 注解依赖 -->
-            <dependency>
-                <groupId>javax.ws.rs</groupId>
-                <artifactId>javax.ws.rs-api</artifactId>
-                <version>2.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-jaxrs</artifactId>
-                <version>3.1.4.Final</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-client</artifactId>
-                <version>3.1.4.Final</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-jaxb-provider</artifactId>
-                <version>3.1.4.Final</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-jackson-provider</artifactId>
-                <version>2.3.5.Final</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.javassist</groupId>
-                <artifactId>javassist</artifactId>
-                <version>3.20.0-GA</version>
+                <version>${shardingsphere.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>dubbo</artifactId>
-                <version>2.6.1</version>
+                <version>${dubbo.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.springframework</groupId>
@@ -259,27 +86,82 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+
+            <!--java object layout-->
+            <dependency>
+                <groupId>org.openjdk.jol</groupId>
+                <artifactId>jol-core</artifactId>
+                <version>${jol-core.version}</version>
+            </dependency>
+            <!-- oval -->
+            <dependency>
+                <groupId>net.sf.oval</groupId>
+                <artifactId>oval</artifactId>
+                <version>${oval.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.spring.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!-- REST ws 注解依赖 -->
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>${javax.ws.rs.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-recipes</artifactId>
-                <version>4.0.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-framework</artifactId>
-                <version>4.0.1</version>
+                <version>${curator.version}</version>
+                <type>pom</type>
             </dependency>
 
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.12</version>
+                <version>${junit.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>org.springframework.security.oauth.boot</groupId>
-                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-                <version>2.0.3.RELEASE</version>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-bom</artifactId>
+                <version>${netty.version}</version>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-all</artifactId>
+                <version>${rocketmy.version}</version>
+                <type>pom</type>
             </dependency>
 
             <dependency>
@@ -332,53 +214,9 @@
                 <scope>provided</scope>
             </dependency>
 
-            <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-bom</artifactId>
-                <version>4.1.29.Final</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!--logback 日志-->
-            <dependency>
-                <groupId>org.logback-extensions</groupId>
-                <artifactId>logback-ext-spring</artifactId>
-                <version>0.1.4</version>
-            </dependency>
-            <dependency>
-                <groupId>net.logstash.logback</groupId>
-                <artifactId>logstash-logback-encoder</artifactId>
-                <version>4.7</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpcore</artifactId>
-                <version>4.4.10</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>4.5.6</version>
-            </dependency>
-
-            <!-- oval -->
-            <dependency>
-                <groupId>net.sf.oval</groupId>
-                <artifactId>oval</artifactId>
-                <version>${oval.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.4</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
+
 
     <distributionManagement>
         <repository>
@@ -394,28 +232,7 @@
     </distributionManagement>
 
 
-
-
     <build>
-        <!--如果你的项目是一个放置通用工具类的工程，那么该项目中，就不能包括上面这个打包插件，
-        如果你这个工具类工程依赖有父工程，那么父工程中也不能包括该打包插件，
-        只有你的项目是一个web项目时，含有Main方法的程序入口类，要加该打包插件，我放在了父工程的pom文件中，
-        那就是代表了所有子模块都有这个打包插件，所以报错，解决就是去掉这个插件 ，只在web工程中加入这个打包插件！
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-        -->
-
         <pluginManagement>
             <plugins>
                 <plugin>
