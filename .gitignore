@@ -26,3 +26,4 @@ hs_err_pid*
 
 logs/*
 **/target/**
+!/LOG_DIR_IS_UNDEFINED/

@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2021/4/11 下午1:06
  */
 @Slf4j
+
 @SpringBootApplication
 public class BootConsulApplication {
     public static void main(String[] args) {

@@ -1,0 +1,31 @@
+server:
+  port: 8210
+  tomcat:
+    max-connections: 512
+    max-threads: 512
+    uri-encoding: utf-8
+
+spring:
+  application:
+    name: cloud_consul_provider
+  profiles:
+    active: dev
+
+  cloud:
+    consul:
+      # 启用服务发现
+      enabled: true
+      host: 192.168.1.2
+      port: 8900
+
+      discovery:
+        instance-id: cloud_consul_provider
+        service-name: cloud_consul_provider
+
+logging:
+  config: classpath:logback-spring.xml
+  path: ./logs
+
+log:
+  root:
+    level: INFO
